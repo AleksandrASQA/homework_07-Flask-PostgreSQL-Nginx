@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+    <h2>Список задач</h2>
+    {% if tasks %}
+        <ul>
+        {% for task in tasks %}
+            <li>
+                <strong>{{ task.title }}</strong>
+                <p>{{ task.description or 'Нет описания' }}</p>
+                <small>Создано: {{ task.created_at.strftime('%d.%m.%Y %H:%M') }}</small>
+            </li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>Задач пока нет. <a href="/create">Создайте первую!</a></p>
+    {% endif %}
+{% endblock %}
